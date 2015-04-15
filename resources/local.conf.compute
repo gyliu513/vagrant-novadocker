@@ -42,7 +42,15 @@ container_formats=ami,ari,aki,bare,ovf,ova,docker
 [[post-config|$NOVA_CONF]]
 [DEFAULT]
 compute_driver=novadocker.virt.docker.DockerDriver
+[oslo_messaging_rabbit]
+rabbit_userid = stackrabbit
+rabbit_password = secret
+rabbit_hosts = 9.21.60.97
 
 [[post-config|/$Q_PLUGIN_CONF_FILE]]
 [ml2]
 tenant_network_types=gre
+[oslo_messaging_rabbit]
+rabbit_userid = stackrabbit
+rabbit_password = secret
+rabbit_hosts = 9.21.60.97
