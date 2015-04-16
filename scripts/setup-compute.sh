@@ -14,9 +14,9 @@ done
 
 function installCompute {
     echo "install compute"
-    sed -e 's/{HOST_IP}/$HOST_IP/' -e 's/{MASTER_IP}/$MASTER_IP/' /vagrant/resources/local.conf.compute > /opt/devstack/local.conf
+    sed -e 's/{HOST_IP}/'$HOST_IP'/' -e 's/{MASTER_IP}/'$MASTER_IP'/' /vagrant/resources/local.conf.compute > /opt/devstack/local.conf
     su - stack -s /opt/devstack/stack.sh
-    cp -f /vagrant/resources/docker.filter /etc/nova/rootwrap.d/
+    cp -f /vagrant/resources/docker.filters /etc/nova/rootwrap.d/
     echo "compute installed succesfully"
 }
 

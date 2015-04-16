@@ -31,6 +31,8 @@ enable_service q-agt
 enable_service q-dhcp
 enable_service q-l3
 enable_service q-meta
+enable_service h-api
+enable_service h-engine
 
 # I am disabling horizon (because I rarely use the web ui)
 # and tempest in order to make the installer complete a
