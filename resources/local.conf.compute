@@ -10,7 +10,7 @@ VIRT_DRIVER=novadocker.virt.docker.DockerDriver
 HOST_IP={HOST_IP}
 MYSQL_HOST={MASTER_IP}
 Q_HOST={MASTER_IP}
-
+IMAGE_URLS=" "
 
 DEST=/opt/stack
 SERVICE_DIR=$DEST/status
