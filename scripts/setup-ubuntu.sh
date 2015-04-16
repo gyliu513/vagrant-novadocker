@@ -11,7 +11,7 @@ function installUtilities {
     apt-get update -y
     apt-get install -y git git-review python-pip python-dev
     # install docker
-    apt-get -y docker.io
+    apt-get install -y docker.io
     # install nova-docker
     git clone http://github.com/stackforge/nova-docker.git
     cd nova-docker
