@@ -8,18 +8,31 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                 node.vm.box = "ubuntu"
                 node.vm.box_url = "https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box"
                 node.vm.provider "virtualbox" do |v|
-                    v.name = "node#{i}"
+                    v.name = "osnode#{i}"
                     v.customize ["modifyvm", :id, "--memory", "1536"]
-                    if i == 2
+                    if i == 1
                         v.customize ["modifyvm", :id, "--memory", "2048"]
                     end
                 end
                 if i < 10
-                        node.vm.network :private_network, ip: "10.211.55.10#{i}"
+                        node.vm.network :private_network, ip: "10.211.65.10#{i}"
                 else
-                        node.vm.network :private_network, ip: "10.211.55.1#{i}"
+                        node.vm.network :private_network, ip: "10.211.65.1#{i}"
                 end
-                node.vm.hostname = "node#{i}"
+                node.vm.hostname = "osnode#{i}"
                 node.vm.provision "shell", path: "scripts/setup-ubuntu.sh"
+                node.vm.provision "shell", path: "scripts/setup-ubuntu-ntp.sh"
+                node.vm.provision "shell", path: "scripts/setup-ubuntu-ntp.sh"
+                        s.path = "scripts/setup-ubuntu-hosts.sh"
+                        s.args = "-t #{numNodes}"
+                end
+                if i == 1
+                        node.vm.provision "shell", path: "scripts/setup-controller.sh"
+                end
+                if i != 1
+                        node.vm.provision "shell" do |s|
+                                s.path = "scripts/setup-compute.sh"
+                                s.args = "-m 10.211.65.101"
+                end
         end
 end

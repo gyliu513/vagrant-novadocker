@@ -22,7 +22,7 @@ function installUtilities {
     /opt/devstack/tools/create-stack-user.sh
     chown -R stack:stack devstack
     # start docker in stack group
-    echo "DOCKER_OPTS=\"-G stack\"" > /etc/default/docker.io
+    echo "DOCKER_OPTS=\"-G stack\"" >> /etc/default/docker.io
     service docker.io restart
 }
 echo "setup ubuntu"

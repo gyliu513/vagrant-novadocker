@@ -1,15 +1,15 @@
 [[local|localrc]]
 ENABLED_SERVICES="n-cpu,neutron,q-agt,-rabbit"
-SERVICE_HOST=10.10.10.70
+SERVICE_HOST={MASTER_IP}
 ADMIN_PASSWORD=secret
 DATABASE_PASSWORD=$ADMIN_PASSWORD
 RABBIT_PASSWORD=$ADMIN_PASSWORD
 SERVICE_PASSWORD=$ADMIN_PASSWORD
 SERVICE_TOKEN=super-secret-admin-token
 VIRT_DRIVER=novadocker.virt.docker.DockerDriver
-HOST_IP=10.10.10.71
-MYSQL_HOST=10.10.10.70
-Q_HOST=10.10.10.70
+HOST_IP={HOST_IP}
+MYSQL_HOST={MASTER_IP}
+Q_HOST={MASTER_IP}
 
 
 DEST=/opt/stack
@@ -43,14 +43,14 @@ container_formats=ami,ari,aki,bare,ovf,ova,docker
 [DEFAULT]
 compute_driver=novadocker.virt.docker.DockerDriver
 [oslo_messaging_rabbit]
-rabbit_userid = stackrabbit
-rabbit_password = secret
-rabbit_hosts = 9.21.60.97
+rabbit_userid=stackrabbit
+rabbit_password=secret
+rabbit_hosts={MASTER_IP}
 
 [[post-config|/$Q_PLUGIN_CONF_FILE]]
 [ml2]
 tenant_network_types=gre
 [oslo_messaging_rabbit]
-rabbit_userid = stackrabbit
-rabbit_password = secret
-rabbit_hosts = 9.21.60.97
+rabbit_userid=stackrabbit
+rabbit_password=secret
+rabbit_hosts={MASTER_IP}

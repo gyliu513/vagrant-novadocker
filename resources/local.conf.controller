@@ -5,7 +5,7 @@ RABBIT_PASSWORD=$ADMIN_PASSWORD
 SERVICE_PASSWORD=$ADMIN_PASSWORD
 SERVICE_TOKEN=super-secret-admin-token
 VIRT_DRIVER=novadocker.virt.docker.DockerDriver
-HOST_IP=10.10.10.70
+HOST_IP={HOST_IP}
 
 DEST=/opt/stack
 SERVICE_DIR=$DEST/status
