@@ -13,7 +13,7 @@ function installUtilities {
     # install docker
     apt-get install -y docker.io
     # install nova-docker
-    git clone http://github.com/stackforge/nova-docker.git
+    git clone https://github.com/qiujian16/nova-docker.git
     cd nova-docker
     python setup.py install
     # get devstack and create stack user
